@@ -1,83 +1,102 @@
-# Gestión de Clientes – Estudio Jurídico
+# Gestión de Clientes – Estudio Jurídico 🧾
 
-Proyecto backend desarrollado con **Java 17** y **Spring Boot**, orientado a la gestión de consultas y clientes para un estudio jurídico. Incluye un CRUD completo, validaciones avanzadas, filtros de búsqueda, paginación y está preparado para integrar autenticación JWT.
+Proyecto backend desarrollado en **Java 17** con **Spring Boot 3.4.5**, orientado a la gestión de consultas jurídicas para estudios legales. Incluye autenticación JWT, validación avanzada, filtros dinámicos, paginación, y protección de endpoints con Spring Security.
+
+> ⚙️ Desarrollado usando **JDK 22**, pero compilado para **Java 17** (LTS y compatible con entornos empresariales).
 
 ---
 
 ## 🚀 Tecnologías utilizadas
 
-- Java 17
+- Java 17 (JDK 22 local)
 - Spring Boot 3.4.5
-- Maven
-- Spring Web
 - Spring Data JPA
-- MySQL
-- Hibernate Validator
-- GitHub Desktop (control de versiones)
+- Spring Security
+- JWT (Json Web Tokens)
+- MySQL + Hibernate
+- Maven
+- Postman (testing API)
 
 ---
 
 ## 🧱 Estructura del proyecto
 
-El backend está organizado en una arquitectura por capas:
-
 com.example.gestionclientes
-├── controller // Endpoints REST
-├── service // Lógica de negocio
-├── repository // Acceso a base de datos (JPA)
-├── dto // DTOs de entrada/salida
-├── model // Entidad Cliente
-├── mapper // Conversión entre entidades y DTOs
-├── validation // Validaciones personalizadas
-├── exception // Manejo global de errores
-└── config // Seguridad y validación (modularizado)
+├── config # Seguridad JWT
+├── controller # Endpoints REST
+├── dto # Request & Response DTOs
+├── exception # GlobalExceptionHandler
+├── mapper # Conversión entre entidades y DTOs
+├── model # Entidades JPA
+├── repository # Interfaces JPA
+├── security # JwtService y filtro JWT
+├── service # Lógica de negocio
+└── validation # Validaciones personalizadas (email único, etc.)
 
 
 ---
 
 ## ✅ Funcionalidades implementadas
 
-- CRUD completo para entidad `Cliente`
-- Validaciones integradas:
-  - Campos obligatorios
-  - Formato de email
-  - Teléfono numérico (entre 8 y 15 dígitos)
-  - Email único con validador personalizado
-- Global Exception Handler con respuestas limpias y claras
-- Filtros por `apellido` (parcial, case-insensitive)
-- Filtros por `tipoConsulta` (exacto, case-insensitive)
-- Paginación y ordenamiento en el endpoint general
+- 🔐 Registro y Login con JWT
+- 🔏 Protección de endpoints vía Spring Security
+- 🔍 Filtros por `apellido` y `tipoConsulta`
+- 📄 Validaciones:
+  - Email válido y único
+  - Teléfono numérico entre 8 y 15 dígitos
+- 🛡 Manejo centralizado de excepciones con mensajes claros
+- 🧭 Paginación y ordenamiento en `GET /api/clientes`
+- 🧪 Probado desde Postman (todos los métodos)
 
 ---
 
-## 📬 Endpoints principales
+## 📬 Endpoints disponibles
 
-- `POST /api/clientes` – Crear cliente
-- `GET /api/clientes` – Listar con paginación y orden
-  - Parámetros: `page`, `size`, `sort`, `dir`
-- `GET /api/clientes/{id}` – Buscar por ID
-- `PUT /api/clientes/{id}` – Actualizar cliente
-- `DELETE /api/clientes/{id}` – Eliminar cliente
-- `GET /api/clientes/buscar-por-apellido?apellido=Pérez`
-- `GET /api/clientes/buscar-por-tipo-consulta?tipoConsulta=Sucesiones`
+### Autenticación (`/auth`)
+- `POST /register` → crea usuario y devuelve token
+- `POST /login` → devuelve JWT si las credenciales son válidas
 
----
+### Gestión de clientes (`/api/clientes`)
+- `GET /` → listado con paginación (token requerido)
+- `GET /{id}` → detalle por ID
+- `POST /` → crear nuevo cliente
+- `PUT /{id}` → actualizar cliente
+- `DELETE /{id}` → eliminar cliente
 
-## 💡 Próximos pasos
-
-- Integración de Spring Security y JWT para autenticación.
-- Protección de rutas y generación de tokens.
-- Documentación con Swagger.
-- Despliegue en entorno cloud.
+### Filtros adicionales
+- `GET /buscar-por-apellido?apellido=Gonzalez`
+- `GET /buscar-por-tipo-consulta?tipoConsulta=Laboral`
 
 ---
 
-## 🧑‍💻 Autor
+## 🔐 Seguridad y JWT
 
-Luciano Barili – [GitHub](https://github.com/tu_usuario) · Java Developer Jr en formación.
+- Los endpoints `/auth/**` son públicos
+- Todos los endpoints `/api/**` requieren token válido
+- Los roles son administrados mediante `SimpleGrantedAuthority`
+- Clave secreta JWT definida en `application.properties`
+
+---
+
+## 🧪 Probar con Postman
+
+1. `POST /auth/register` → devuelve JWT
+2. `POST /auth/login` → devuelve JWT
+3. Incluir en cada request protegida:
+Authorization: Bearer <tu_token>
+
+
+---
+
+## 👤 Autor
+
+**Luciano Barili**  
+Abogado y Java Developer Jr.  
+[GitHub](https://github.com/tu_usuario) · [LinkedIn](https://linkedin.com/in/tu_usuario)
 
 ---
 
 ## 📝 Licencia
 
-Este proyecto es de libre uso con fines educativos y demostrativos.
+Proyecto de uso libre con fines educativos y de demostración profesional.
+
