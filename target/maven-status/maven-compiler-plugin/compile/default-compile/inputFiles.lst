@@ -1,0 +1,11 @@
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/GestionclientesApplication.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/config/SecurityConfig.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/controller/ClienteController.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/dto/ClienteRequestDTO.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/dto/ClienteResponseDTO.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/exception/ResourceNotFoundException.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/mapper/ClienteMapper.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/model/Cliente.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/repository/ClienteRepository.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/service/ClienteService.java
+/Users/luciano/Desktop/CS/JAVA/gestionclientes/src/main/java/com/example/gestionclientes/service/ClienteServiceImpl.java
